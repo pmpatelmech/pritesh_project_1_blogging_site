@@ -54,10 +54,16 @@ const login = async function (req, res) {
         let author = await AuthorModel.findOne({ email: userName, password: pass })
         if (!author) return res.status(400).send({ Status: false, msg: "Invalid login Credentials" })
 
+        let payLoad = { authorId: author._id, iat: Math.floor(Date.now() / 1000), eat: Math.floor(Date.now() / 1000) + 10 * 3600 }
+        let secretKey = "myprivatekeycontains123!@#"
+        let token = jwt.sign(payLoad, secretKey)
 
+        res.header("x-api-key", token)
+        res.status(200).send({ status: true, msg: "Login successful", data: token })
 
     } catch (error) {
-
+        res.status(500).send({ error: error.message })
     }
-
 }
+module.exports.createAuthor = createAuthor
+module.exports.login = login
