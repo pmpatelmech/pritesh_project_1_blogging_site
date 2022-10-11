@@ -1,0 +1,19 @@
+{
+  "name": "pritesh_project_1_blogsite",
+  "version": "1.0.0",
+  "description": "priteshProject01",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.5",
+    "nodemon": "^2.0.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
